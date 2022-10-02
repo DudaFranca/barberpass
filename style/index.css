@@ -1,0 +1,35 @@
+@import url('color.css');
+
+.background {
+    background-color: var(--cinza);
+    font-family: 'Bevan';
+    padding: 0 46px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+.logo-mini {
+    width: 120px;
+}
+
+.botao {
+    background-color: var(--branco);
+    color: var(--cinza);
+    border-radius: 0;
+    border: 0;
+    font-size: 20px;
+    width: 289px;
+    height: 44px;
+}
+
+.btn-top {
+    margin-top: 143px;
+}
+
+.btn-botton {
+    margin-top: 47px;
+}

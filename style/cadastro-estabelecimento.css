@@ -1,0 +1,26 @@
+@import url('color.css');
+
+.titulo {
+    color: var(--amarelo);
+    font-size: 25px;
+    text-align: start;
+    margin-top: 21px;
+}
+
+.subtitulo {
+    color: var(--branco);
+    font-size: 15px;
+    text-align: start;
+    margin-top: 14px;
+}
+
+.campos {
+    color: var(--branco);
+    text-align: start;
+}
+
+.input {
+    width: 289px;
+    height: 30px;
+    margin-top: 3px;
+}
