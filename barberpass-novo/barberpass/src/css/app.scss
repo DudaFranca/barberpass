@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan&display=swap');
+
+
+.fundo {
+    background-color: $primary;
+    font-family: 'Bevan';
+    padding: 0 46px;
+}
+
+.cor-secondary {
+    background-color: $secondary;
+}
+
+.titulo {
+    color: $accent;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.texto {
+    color: $secondary;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-grande {
+    padding-top: 100px;
+}
+
+.logo-mini {
+    padding-top: 50px;
+    width: 120px;
+}
+
+.btn-padrao {
+    display: flex;
+    justify-content: center;
+
+}
+
+.botao {
+    background-color: $secondary;
+    color: $primary;
+    border-radius: 0;
+    border: 0;
+    font-size: 20px;
+    width: 289px;
+    height: 44px;
+}
+
+.botao-voltar {
+    color: $secondary;
+    font-size: 13px;
+    width: 289px;
+    height: 44px;
+}
+
+.login {
+    margin-top: 100px;
+}
