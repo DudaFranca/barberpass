@@ -6,7 +6,7 @@
     <div v-if="login == false">
       <div class="btn-padrao">
         <q-btn class="login botao" label="Login" @click="submitLogin" />
-        </div>
+      </div>
       <div class="q-mt-lg btn-padrao">
         <q-btn class="botao" label="Cadastre-se" />
       </div>
