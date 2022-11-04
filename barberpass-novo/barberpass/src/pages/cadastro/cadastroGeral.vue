@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="../../../public/img/logo.svg" class="logo-mini">
     </div>
-    <div v-if="cliente" class="row" @click="cliente">
+    <div v-if="cliente" class="row">
       <Cliente />
     </div>
     <div v-if="estabelecimento" class="row">

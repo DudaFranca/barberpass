@@ -4,16 +4,9 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
-  },
-
-  {
-    path: '/estabelecimento',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/estabelecimento.vue') },
-      { path: 'cadastro', component: () => import('pages/cadastroEstabelecimento.vue') },
+      // { path: '', name: 'home', component: () => import('pages/IndexPage.vue') },
+      { path: 'acesso', name: 'mainAccess', component: () => import('src/pages/mainAccess/mainAccess.vue') },
+      { path: 'cadastro', name: 'cadastroGeral', component: () => import('src/pages/cadastro/cadastroGeral.vue') }
     ]
   },
 

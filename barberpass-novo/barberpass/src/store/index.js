@@ -1,7 +1,7 @@
 import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 
-import estabelecimento from './estabelecimento'
+// import example from './module-example'
 
 /*
  * If not building with SSR mode, you can
@@ -15,7 +15,7 @@ import estabelecimento from './estabelecimento'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      estabelecimento,
+      // example
     },
 
     // enable strict mode (adds overhead!)

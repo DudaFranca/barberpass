@@ -3,7 +3,7 @@
       <h4 class="titulo">Cadastre sua loja</h4>
       <p class="texto">Cadastre sua barbearia e alcance  mais clientes</p>
       <form @submit.prevent="cadastroCliente()">
-        <div id="form" class="row justify-evenly">
+        <div id="form" class="row">
           <div class="col-12">
             <q-input
               ref="nome"
@@ -196,7 +196,7 @@
             <q-btn
               type="submit"
               class="botao"
-              label="Cadastrar"
+              label="Próximo"
             />
           </div>
         </div>

@@ -1,14 +1,10 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="logo logo-grande">
-      <img src="../../public/img/logo.svg" alt="">
-    </div>
-    <div class="btn-padrao">
-      <q-btn class="login botao" label="Estabelecimento" to="/estabelecimento" />
-    </div>
-    <div class="q-mt-lg btn-padrao">
-      <q-btn class="botao" label="Cliente" />
-    </div>
+    <img
+      alt="Quasar logo"
+      src="~assets/quasar-logo-vertical.svg"
+      style="width: 200px; height: 200px"
+    >
   </q-page>
 </template>
 
