@@ -1,8 +1,8 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="fundo">
     <q-page-container>
-      <div class="logo logo-grande">
-        <img src="../../public/img/logo.svg" alt="">
+      <div class="logo">
+        <img src="../../public/img/logo.svg" alt="" class="logo-mini">
       </div>
       <router-view />
     </q-page-container>

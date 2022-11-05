@@ -1,12 +1,9 @@
 <template>
   <div class="col-12">
-    <div class="logo">
-      <img src="../../public/img/logo.svg" alt="" class="logo-mini">
-    </div>
     <h4 class="titulo">Cadastre sua loja</h4>
     <p class="texto">Cadastre sua barbearia e alcance  mais clientes</p>
     <form @submit.prevent="cadastro">
-      <div id="form" class="row justify-evenly">
+      <div id="form" class="row justify-between">
         <div class="col-12">
           <q-input
             ref="nome"
@@ -114,7 +111,6 @@
           />
         </div>
         <div class="col-6">
-          {{form.data}}
           <q-input
             ref="cep"
             v-model="form.cep"
@@ -126,7 +122,7 @@
             @keyup="buscarCep()"
           />
         </div>
-        <div class="col-6">
+        <div class="col-auto">
           <q-input
             ref="numero"
             v-model="form.numero"
@@ -166,38 +162,36 @@
             v-model="form.cidade"
             label="Cidade"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu cidade']"
             lazy-rules
             bg-color="secondary"
           />
         </div>
-        <div class="col-6">
+        <div class="col-auto">
           <q-input
             ref="estado"
             v-model="form.estado"
             label="Estado"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu estado']"
             lazy-rules
             bg-color="secondary"
+            mask="AA"
           />
         </div>
-        <div id="buttons" class="q-mt-sm btn-padrao">
-          <q-btn
-            type="submit"
-            class="botao"
-            label="Cadastrar"
-          />
-        </div>
+      </div>
+      <div id="buttons" class="q-mt-sm btn-padrao">
+        <q-btn
+          type="submit"
+          class="botao"
+          label="Cadastrar"
+        />
       </div>
     </form>
   </div>
 </template>
   
 <script>
-  // import axios from "../boot/axios";
   import { mapActions } from "vuex";
 
   export default {
@@ -216,7 +210,7 @@
           cep: null,
           data: null,
           numero: "",
-          // logradouro: "",
+          logradouro: "",
           bairro: "",
           estado: "",
         },
@@ -224,17 +218,18 @@
       }
     },
     methods: {
-      ...mapActions("estabelecimento", ["ActionCadastroEstabelecimento"]),
+      ...mapActions("estabelecimento", ["ActionCadastroEstabelecimento", "ActionBuscaCep"]),
       
-      buscarCep() {
+      async buscarCep() {
         if(this.form.cep.length === 8) {
-          this.$axios.get(`https://viacep.com.br/ws/${ this.form.cep }/json/`).then(
-            response => this.form.data = response.data
-          ).catch(
-            error => console.log(error)
-          )
+          await this.ActionBuscaCep(this.form.cep).then((res) => {
+            console.log(res);
+            this.form.logradouro = res.logradouro;
+            this.form.bairro = res.bairro;
+            this.form.cidade = res.localidade;
+            this.form.estado = res.uf;
+          })
         }
-        console.log(this.form.data);
       },
 
       cadastro() {

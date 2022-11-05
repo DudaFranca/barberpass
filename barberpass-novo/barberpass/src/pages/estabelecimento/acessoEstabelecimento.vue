@@ -1,13 +1,10 @@
 <template>
   <q-page class="container fundo">
-    <div class="logo logo-grande">
-      <img src="../../public/img/logo.svg" alt="">
-    </div>
     <div class="btn-padrao">
-      <q-btn class="login botao" label="Login" to="/login" />
+      <q-btn class="login botao" label="Login" to="/estabelecimento/login" />
       </div>
     <div class="q-mt-lg btn-padrao">
-      <q-btn class="botao" label="Cadastre-se" to="/cadastro" />
+      <q-btn class="botao" label="Cadastre-se" to="/estabelecimento/cadastro" />
     </div>
     <div v-if="login">
       <LoginType />
