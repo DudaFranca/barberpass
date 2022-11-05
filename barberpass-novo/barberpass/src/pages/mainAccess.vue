@@ -1,15 +1,13 @@
 <template>
   <q-page class="container fundo">
     <div class="logo logo-grande">
-      <img src="../../../public/img/logo.svg" alt="">
+      <img src="../../public/img/logo.svg" alt="">
     </div>
-    <div v-if="login == false">
-      <div class="btn-padrao">
-        <q-btn class="login botao" label="Login" @click="submitLogin" />
-        </div>
-      <div class="q-mt-lg btn-padrao">
-        <q-btn class="botao" label="Cadastre-se" />
+    <div class="btn-padrao">
+      <q-btn class="login botao" label="Login" to="/login" />
       </div>
+    <div class="q-mt-lg btn-padrao">
+      <q-btn class="botao" label="Cadastre-se" to="/cadastro" />
     </div>
     <div v-if="login">
       <LoginType />
@@ -19,12 +17,8 @@
 </template>
 
 <script>
-import LoginType from '../../components/loginType/loginType.vue'
 export default {
   name: 'MainAccess',
-  components: {
-    LoginType
-  },
   data () {
     return {
       login: false

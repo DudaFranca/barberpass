@@ -1,31 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bevan&display=swap');
 
+$cinza: #494949;
+$branco: #FFFFFF;
+$amarelo: #FFBA01;
+$fonte: 'Bevan';
 
 .fundo {
-    background-color: $primary;
+    background-color: $cinza;
     font-family: 'Bevan';
     padding: 0 46px;
-}
-
-.cor-secondary {
-    background-color: $secondary;
-}
-
-.titulo {
-    color: $accent;
-    font-size: 25px;
-    margin-bottom: 0px;
-}
-
-.texto {
-    color: $secondary;
-    font-size: 15px;
-    margin-bottom: 10px;
 }
 
 .logo {
     display: flex;
     justify-content: center;
+    
 }
 
 .logo-grande {
@@ -37,6 +26,17 @@
     width: 120px;
 }
 
+.titulo {
+    color: $amarelo;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.texto {
+    color: $branco;
+    font-size: 15px;
+}
+
 .btn-padrao {
     display: flex;
     justify-content: center;
@@ -44,8 +44,8 @@
 }
 
 .botao {
-    background-color: $secondary;
-    color: $primary;
+    background-color: $branco;
+    color: $cinza;
     border-radius: 0;
     border: 0;
     font-size: 20px;
@@ -54,7 +54,7 @@
 }
 
 .botao-voltar {
-    color: $secondary;
+    color: $branco;
     font-size: 13px;
     width: 289px;
     height: 44px;

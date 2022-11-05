@@ -4,9 +4,23 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      // { path: '', name: 'home', component: () => import('pages/IndexPage.vue') },
-      { path: 'acesso', name: 'mainAccess', component: () => import('src/pages/mainAccess/mainAccess.vue') },
-      { path: 'cadastro', name: 'cadastroGeral', component: () => import('src/pages/cadastro/cadastroGeral.vue') }
+      { path: '', name: 'loginType', component: () => import('src/pages/loginType.vue') },
+      { path: 'acesso-estabelecimento', name: 'mainAccess', component: () => import('src/pages/mainAccess.vue') },
+    ]
+  },
+  {
+    path: '/cadastro',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: 'cadastroEstabelecimento', component: () => import('src/pages/cadastroEstabelecimento.vue') }
+    ]
+  },
+
+  {
+    path: '/login',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: 'loginEstabelecimento', component: () => import('src/pages/loginEstabelecimento.vue') }
     ]
   },
 
