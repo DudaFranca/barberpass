@@ -234,6 +234,24 @@
 
       cadastro() {
         this.ActionCadastroEstabelecimento(this.form);
+        this.limpar();
+      },
+
+      limpar() {
+        this.form.nomeCompleto = "";
+        this.form.cnpj = "";
+        this.form.telefone = "";
+        this.form.email = "";
+        this.form.senha = "";
+        this.form.senhaConferir = "";
+        this.form.nomeBarbearia = "";
+        this.form.cidade = "";
+        this.form.cep = null;
+        this.form.data = null;
+        this.form.numero = "";
+        this.form.logradouro = "";
+        this.form.bairro = "";
+        this.form.estado = ""
       }
     },
     // watch: {

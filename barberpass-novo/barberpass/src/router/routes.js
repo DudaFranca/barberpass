@@ -22,13 +22,13 @@ const routes = [
     ]
   },
 
-  // {
-  //   path: '/',
-  //   component: () => import('layouts/MainLayoutBackground.vue'),
-  //   children: [
-  //     { path: 'home', name: 'home', component: () => import('src/pages/estabelecimento/home.vue') },
-  //   ]
-  // },
+  {
+    path: '/',
+    component: () => import('layouts/MainLayoutBackground.vue'),
+    children: [
+      { path: 'home', name: 'home', component: () => import('src/pages/home.vue') },
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

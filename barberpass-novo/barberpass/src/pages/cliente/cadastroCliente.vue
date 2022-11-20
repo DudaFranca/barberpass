@@ -211,7 +211,7 @@
       }
     },
     methods: {
-      ...mapActions("cliente", ["ActionCadastroCliente"]),
+      ...mapActions("cliente", ["ActionCadastroCliente", "ActionBuscaCep"]),
       
       async buscarCep() {
         if(this.form.cep.length === 8) {
