@@ -1,7 +1,7 @@
 import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
-import estabelecimento from './estabelecimento'
-import cliente from './cliente'
+import { store as estabelecimento } from "./estabelecimento";
+import { store as cliente } from './cliente'
 
 // import example from './module-example'
 

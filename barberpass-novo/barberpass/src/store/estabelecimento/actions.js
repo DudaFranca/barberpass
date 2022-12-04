@@ -1,6 +1,6 @@
 import {api} from '../../boot/axios';
 import { Connection } from "../../http/Connection";
-import types from "./mutation-types";
+import * as types from "./mutation-types";
 
 export const ActionCadastroEstabelecimento = ({dispatch, commit}, payload) => {
   return new Promise((resolve, reject) => {
