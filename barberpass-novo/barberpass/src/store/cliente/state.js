@@ -1,3 +1,3 @@
-export default {
-  loadingCreatePatient: false
-}
+// export default {
+//   stateCadastroCliente: {}
+// }

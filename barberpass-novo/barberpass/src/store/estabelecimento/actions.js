@@ -1,7 +1,19 @@
-import {api} from '../../boot/axios'
+import {api} from '../../boot/axios';
+import { Connection } from "../../http/Connection";
+import types from "./mutation-types";
 
 export const ActionCadastroEstabelecimento = ({dispatch, commit}, payload) => {
-    console.log("ActionCadastroEstabelecimento", payload);
+  return new Promise((resolve, reject) => {
+    Connection.post("/save/barber", {...payload})
+    .then(response => 
+      console.log(response.data),
+      resolve()
+    )
+    .catch(error => {
+      reject(error);
+      console.log(error);
+    });
+  })
 }
 
 export const ActionBuscaCep = ({dispatch, commit}, payload) => {
@@ -14,27 +26,20 @@ export const ActionBuscaCep = ({dispatch, commit}, payload) => {
   });
 }
 
-// export const ActionDoLogin = ({ dispatch }, payload) => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let { login, senha } = payload;
-//       let response = await Connection.post("login", { login, senha });
+export const ActionGetBarbearia = ({dispatch, commit}, payload) => {
+  console.log('action');
+  return new Promise((resolve, reject) => {
+    Connection.get('get/barber')
+    .then(response => {
+      console.log(response);
+      dispatch("ActionSetBarbearia", response.data)
+    }).catch(
+      error => reject(error)
+    )
+  });
+}
 
-//       if (!response.data.error) {
-//         Connection.defaults.headers.Authorization = `Bearer ${response.data.access_token}`;
-//         dispatch("ActionSetUser", response.data.user);
-//         dispatch("ActionSetToken", response.data.access_token);
-//         dispatch("ActionSetTokenTimeExpire", response.data.expires_in);
-//         dispatch("ActionDisableModalNotLogged", false);
-//         Sentry.setUser({
-//           id: response.data.user.id,
-//           email: response.data.user.email
-//         });
-//       }
-
-//       resolve(response);
-//     } catch (err) {
-//       reject(err);
-//     }
-//   });
-// };
+export const ActionSetBarbearia = ({ commit }, payload) => {
+  console.log(123);
+  commit(types.SET_BARBEARIA, payload);
+};

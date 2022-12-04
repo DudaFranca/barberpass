@@ -4,7 +4,7 @@
       <div class="col-12">
         <q-input
           ref="cpf"
-          v-model="cpf"
+          v-model="dados.cpf"
           label="CPF"
           outlined
           :rules="[(val) => (val && val.length > 0) || 'Preencha o seu CPF']"
@@ -16,7 +16,7 @@
       <div class="col-12">
         <q-input
           ref="senha"
-          v-model="senha"
+          v-model="dados.senha"
           label="Senha"
           outlined
           
@@ -39,6 +39,7 @@
           type="submit"
           class="botao"
           label="Entrar"
+          :to="logado ? '/planos' : ''"
         />
       </div>
     </form>
@@ -46,19 +47,37 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+
 export default {
     name: 'MainAccess',
     data () {
         return {
-          cpf: "",
-          senha: "",
+          dados: {
+            id: 10,
+            cpf: "",
+            senha: "",
+          },
           isPwd: true,
+          logado: false
         }
     },
-    methods: {
-        login() {
-          console.log('ok');
+    computed: {
+      logado() {
+        if (this.logado) {
+          return '/planos'
         }
+      }
+    },
+    methods: {
+      ...mapActions("cliente", ["ActionLoginCliente"]),
+
+        login() {
+          // this.ActionLoginCliente(this.login)
+          if (this.dados.cpf == "126.726.304-02" && this.dados.senha == "123") {
+            this.logado = true;
+          }
+        },
     }
 }
 </script>

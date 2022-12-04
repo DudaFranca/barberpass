@@ -7,10 +7,9 @@
         <div class="col-12">
           <q-input
             ref="nome"
-            v-model="form.nomeCompleto"
+            v-model="form.ownerName"
             label="Nome completo"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu nome completo']"
             lazy-rules
             bg-color="secondary"
@@ -19,10 +18,9 @@
         <div class="col-12">
           <q-input
             ref="cnpj"
-            v-model="form.cnpj"
+            v-model="form.cpfcnpj"
             label="CNPJ"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu CNPJ']"
             lazy-rules
             bg-color="secondary"
@@ -32,10 +30,9 @@
         <div class="col-12">
           <q-input
             ref="telefone"
-            v-model="form.telefone"
+            v-model="telefone"
             label="Telefone de contato"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu telefone de contato']"
             lazy-rules
             bg-color="secondary"
@@ -45,10 +42,9 @@
         <div class="col-12">
           <q-input
             ref="email"
-            v-model="form.email"
+            v-model="email"
             label="Email"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu Email']"
             lazy-rules
             bg-color="secondary"
@@ -57,10 +53,9 @@
         <div class="col-12">
           <q-input
             ref="senha"
-            v-model="form.senha"
+            v-model="senha"
             label="Digite uma senha"
             outlined
-            
             :rules="[(val) => (val && val.length > 0) || 'Digite uma senha']"
             :type="isPwd ? 'password' : 'text'"
             lazy-rules
@@ -78,7 +73,7 @@
         <div class="col-12">
           <q-input
             ref="senhaConferir"
-            v-model="form.senhaConferir"
+            v-model="senhaConferir"
             label="Confirme sua senha"
             outlined
             
@@ -102,7 +97,7 @@
         <div class="col-12">
           <q-input
             ref="nomeBarbearia"
-            v-model="form.nomeBarbearia"
+            v-model="form.nome"
             label="Qual o nome da sua barbearia?"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o nome da sua barbearia']"
@@ -113,7 +108,7 @@
         <div class="col-6">
           <q-input
             ref="cep"
-            v-model="form.cep"
+            v-model="form.address.zip_code"
             label="CEP"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha seu CEP']"
@@ -125,7 +120,7 @@
         <div class="col-auto">
           <q-input
             ref="numero"
-            v-model="form.numero"
+            v-model="numero"
             label="Número"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o número da sua residencia']"
@@ -136,7 +131,7 @@
         <div class="col-12">
           <q-input
             ref="logradouro"
-            v-model="form.logradouro"
+            v-model="form.address.address"
             label="Logradouro"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu logradouro']"
@@ -147,7 +142,7 @@
         <div class="col-12">
           <q-input
             ref="bairro"
-            v-model="form.bairro"
+            v-model="form.address.neighborhood"
             label="Bairro"
             outlined
             
@@ -159,7 +154,7 @@
         <div class="col-6">
           <q-input
             ref="cidade"
-            v-model="form.cidade"
+            v-model="form.address.city"
             label="Cidade"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu cidade']"
@@ -170,7 +165,7 @@
         <div class="col-auto">
           <q-input
             ref="estado"
-            v-model="form.estado"
+            v-model="estado"
             label="Estado"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu estado']"
@@ -199,21 +194,25 @@
     data () {
       return {
         form: {
-          nomeCompleto: "",
-          cnpj: "",
-          telefone: "",
-          email: "",
-          senha: "",
-          senhaConferir: "",
-          nomeBarbearia: "",
-          cidade: "",
-          cep: null,
-          data: null,
-          numero: "",
-          logradouro: "",
-          bairro: "",
-          estado: "",
+          name: "",
+          cpfcnpj: "",
+          ownerName: "",
+          urlCover: "",
+          urlLogo: "",
+          address: {
+            address: "",
+            neighborhood: "",
+            city: "",
+            zip_code: "",
+            complementaryInfo: "",
+          }
         },
+        telefone: "",
+        email: "",
+        senha: "",
+        senhaConferir: "",
+        numero: "",
+        estado: "",
         isPwd: true,
       }
     },
@@ -221,13 +220,13 @@
       ...mapActions("estabelecimento", ["ActionCadastroEstabelecimento", "ActionBuscaCep"]),
       
       async buscarCep() {
-        if(this.form.cep.length === 8) {
-          await this.ActionBuscaCep(this.form.cep).then((res) => {
+        if(this.form.zip_code.length === 8) {
+          await this.ActionBuscaCep(this.form.zip_code).then((res) => {
             console.log(res);
-            this.form.logradouro = res.logradouro;
-            this.form.bairro = res.bairro;
-            this.form.cidade = res.localidade;
-            this.form.estado = res.uf;
+            this.form.address = res.logradouro;
+            this.form.neighborhood = res.bairro;
+            this.form.city = res.localidade;
+            this.estado = res.uf;
           })
         }
       },
@@ -238,28 +237,23 @@
       },
 
       limpar() {
-        this.form.nomeCompleto = "";
-        this.form.cnpj = "";
-        this.form.telefone = "";
-        this.form.email = "";
-        this.form.senha = "";
-        this.form.senhaConferir = "";
-        this.form.nomeBarbearia = "";
-        this.form.cidade = "";
-        this.form.cep = null;
-        this.form.data = null;
-        this.form.numero = "";
-        this.form.logradouro = "";
-        this.form.bairro = "";
-        this.form.estado = ""
+        this.form.name = "";
+        this.form.cpfcnpj = "";
+        this.form.ownerName = "";
+        this.form.urlCover = "";
+        this.form.urlLogo = "";
+        this.form.address = {};
+        this.form.neighborhood = "";
+        this.form.city = "";
+        this.form.zip_code = null;
+        this.telefone = "";
+        this.email = "";
+        this.senha = "";
+        this.senhaConferir = "";
+        this.numero = "";
+        this.estado = "";
       }
     },
-    // watch: {
-    //   cep: function(novoCep, velhoCep) {
-    //     if (novoCep.length === 8) this.getCep()
-    //     else this.form.response = null
-    //   }
-    // }
   }
 </script>
   

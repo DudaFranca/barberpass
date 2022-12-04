@@ -7,7 +7,7 @@
         <div class="col-12">
           <q-input
             ref="nome"
-            v-model="form.nomeCompleto"
+            v-model="form.name"
             label="Nome completo"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu nome completo']"
@@ -17,17 +17,16 @@
         </div>
         <div class="col-12">
           <q-input
-            ref="cpf"
-            v-model="form.cpf"
-            label="CPF"
+            ref="login"
+            v-model="form.login"
+            label="Login"
             outlined
-            :rules="[(val) => (val && val.length > 0) || 'Preencha o seu CPF']"
+            :rules="[(val) => (val && val.length > 0) || 'Preencha o seu login']"
             lazy-rules
             bg-color="secondary"
-            mask="###.###.###-##"
           />
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
           <q-input
             ref="nascimento"
             v-model="form.nascimento"
@@ -38,11 +37,11 @@
             bg-color="secondary"
             mask="##/##/####"
           />
-        </div>
+        </div> -->
         <div class="col-12">
           <q-input
             ref="telefone"
-            v-model="form.telefone"
+            v-model="form.cellphone"
             label="Telefone de contato"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu telefone de contato']"
@@ -54,7 +53,7 @@
         <div class="col-12">
           <q-input
             ref="email"
-            v-model="form.email"
+            v-model="email"
             label="Email"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu Email']"
@@ -65,7 +64,7 @@
         <div class="col-12">
           <q-input
             ref="senha"
-            v-model="form.senha"
+            v-model="form.passworld"
             label="Digite uma senha"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Digite uma senha']"
@@ -82,7 +81,7 @@
             </template>
           </q-input>
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
           <q-input
             ref="senhaConferir"
             v-model="form.senhaConferir"
@@ -102,11 +101,11 @@
               ></q-icon>
             </template>
           </q-input>
-        </div>
+        </div> -->
         <div class="col-6">
           <q-input
             ref="cep"
-            v-model="form.cep"
+            v-model="form.address.zip_code"
             label="CEP"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha seu CEP']"
@@ -118,7 +117,7 @@
         <div class="col-auto">
           <q-input
             ref="numero"
-            v-model="form.numero"
+            v-model="numero"
             label="Número"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o número da sua residencia']"
@@ -129,7 +128,7 @@
         <div class="col-12">
           <q-input
             ref="logradouro"
-            v-model="form.logradouro"
+            v-model="form.address.address"
             label="Logradouro"
             outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu logradouro']"
@@ -140,7 +139,7 @@
         <div class="col-12">
           <q-input
             ref="bairro"
-            v-model="form.bairro"
+            v-model="form.address.neighborhood"
             label="Bairro"
             outlined
             
@@ -152,7 +151,7 @@
         <div class="col-6">
           <q-input
             ref="cidade"
-            v-model="form.cidade"
+            v-model="form.address.city"
             label="Cidade"
             outlined
             
@@ -164,10 +163,21 @@
         <div class="col-auto">
           <q-input
             ref="estado"
-            v-model="form.estado"
+            v-model="estado"
             label="Estado"
             outlined
-            
+            :rules="[(val) => (val && val.length > 0) || 'Preencha o seu estado']"
+            lazy-rules
+            bg-color="secondary"
+            mask="AA"
+          />
+        </div>
+        <div class="col-12">
+          <q-input
+            ref="complemento"
+            v-model="form.address.complementaryInfo"
+            label="Complemento"
+            outlined
             :rules="[(val) => (val && val.length > 0) || 'Preencha o seu estado']"
             lazy-rules
             bg-color="secondary"
@@ -186,55 +196,90 @@
 </template>
   
 <script>
-  import { mapActions } from "vuex";
+  import { mapActions, mapState } from "vuex";
 
   export default {
     name: 'Estabelecimento',
     data () {
       return {
         form: {
-          nomeCompleto: "",
-          cof: "",
-          telefone: "",
-          email: "",
-          senha: "",
-          senhaConferir: "",
-          cidade: "",
-          cep: null,
-          data: null,
-          numero: "",
-          logradouro: "",
-          bairro: "",
-          estado: "",
+          name: "",
+          login: "",
+          address: {
+            address: "",
+            neighborhood: "",
+            city: "",
+            zip_code: "",
+            complementaryInfo: "",
+          },
+          passworld: "",
+          cellphone: "",
+          cardNumber: {
+            cardNumber: "",
+            brand: ""
+        }
         },
+        email: "",
+        numero: "",
+        estado: "",
+        senhaConferir: "",
         isPwd: true,
       }
     },
     methods: {
-      ...mapActions("cliente", ["ActionCadastroCliente", "ActionBuscaCep"]),
-      
+      ...mapActions("cliente", ["ActionCadastroCliente", "ActionBuscaCep", "ActionStateCadastroCliente"]),
+      ...mapState("cliente", ["stateCadastroCliente"]),
+
       async buscarCep() {
-        if(this.form.cep.length === 8) {
-          await this.ActionBuscaCep(this.form.cep).then((res) => {
-            console.log(res);
-            this.form.logradouro = res.logradouro;
-            this.form.bairro = res.bairro;
-            this.form.cidade = res.localidade;
-            this.form.estado = res.uf;
+        if(this.form.address.zip_code.length === 8) {
+          await this.ActionBuscaCep(this.form.address.zip_code).then((res) => {
+            this.form.address.address = res.logradouro;
+            this.form.address.neighborhood = res.bairro;
+            this.form.address.city = res.localidade;
+            this.address.estado = res.uf;
           })
         }
       },
 
+      // set() {
+      //   this.form.name = this.stateCadastroCliente.name;
+      //   this.form.login = this.stateCadastroCliente.login;
+      //   this.form.cellphone = this.stateCadastroCliente.cellphone;
+      //   this.form.email = this.stateCadastroCliente.email;
+      //   this.form.passworld = this.stateCadastroCliente.passworld;
+      //   this.form.senhaConferir = this.stateCadastroCliente.senhaConferir;
+      //   this.form.city = this.stateCadastroCliente.city;
+      //   this.form.zip_code = this.stateCadastroCliente.zip_code;
+      //   this.form.data = this.stateCadastroCliente.data;
+      //   this.form.address = this.stateCadastroCliente.address;
+      //   this.form.neighborhood = this.stateCadastroCliente.neighborhood;
+      //   this.form.complementaryInfo = this.stateCadastroCliente.complementaryInfo;
+      // },
+
+      limpar() {
+        this.form.name = "",
+        this.form.login = "",
+        this.form.cellphone = "",
+        this.email = "",
+        this.form.passworld = "",
+        this.form.senhaConferir = "",
+        this.form.address.city = "",
+        this.form.address.zip_code = "",
+        this.form.address = "",
+        this.form.address.neighborhood = "",
+        this.form.address.complementaryInfo = "",
+        this.form.cardNumber.brand = "",
+        this.form.cardNumber.cardNumber = "",
+        this.numero = "",
+        this.estado = "",
+        this.senhaConferir = ""
+      },
+
       cadastro() {
         this.ActionCadastroCliente(this.form);
+        // this.limpar();
       }
     },
-    // watch: {
-    //   cep: function(novoCep, velhoCep) {
-    //     if (novoCep.length === 8) this.getCep()
-    //     else this.form.response = null
-    //   }
-    // }
   }
 </script>
   

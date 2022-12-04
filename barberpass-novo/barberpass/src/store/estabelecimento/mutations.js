@@ -1,2 +1,8 @@
-export function someMutation (/* state */) {
+import types from "./mutation-types";
+
+export default {
+  [types.SET_BARBEARIA](state, payload) {
+    state.barbearias = payload;
+  },
 }
+
