@@ -1,3 +1,3 @@
-// export default {
-//   stateCadastroCliente: {}
-// }
+export default {
+    usuariosAgendados: {}
+}

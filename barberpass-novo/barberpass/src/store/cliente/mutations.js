@@ -1,7 +1,7 @@
-// import  types from "./mutation-types";
+import * as types from "./mutation-types";
 
-// export default {
-//     [types.SET_STATECADASTROCLIENTE](state, payload) {
-//         state.stateCadastroCliente = payload;
-//     },
-// }
+export default {
+    [types.SET_USUARIOSAGENDADOS](state, payload) {
+        state.usuariosAgendados = payload;
+    },
+}

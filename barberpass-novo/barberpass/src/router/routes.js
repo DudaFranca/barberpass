@@ -17,19 +17,11 @@ const routes = [
     children: [
       { path: 'estabelecimento/cadastro', name: 'cadastroEstabelecimento', component: () => import('src/pages/estabelecimento/cadastroEstabelecimento.vue') },
       { path: 'cliente/cadastro', name: 'cadastroCliente', component: () => import('src/pages/cliente/cadastroCliente.vue') },
-      { path: 'cliente/cadastro/fianceiro', name: 'FinanceiroCliente', component: () => import('src/pages/cliente/financeiroCliente.vue') },
-      { path: 'cliente/perfil', name: 'perfil', component: () => import('src/pages/cliente/perfil.vue') },
-      { path: 'planos', name: 'planos', component: () => import('src/pages/planos.vue') },
-      { path: 'lista/barbearias', name: 'barbearias', component: () => import('src/pages/barbearias.vue') },
-      { path: 'lista/servicos', name: 'servicos', component: () => import('src/pages/servicos.vue') },
-      { path: 'estabelecimento/cadastro/servicos', name: 'cadastroServicos', component: () => import('src/pages/cadastroServicos.vue') },
-    ]
-  },
-
-  {
-    path: '/',
-    component: () => import('layouts/MainLayoutBackground.vue'),
-    children: [
+      { path: 'cliente/planos', name: 'planos', component: () => import('src/pages/cliente/planos.vue') },
+      { path: 'cliente/lista/barbearias', name: 'barbearias', component: () => import('src/pages/cliente/barbearias.vue') },
+      { path: 'cliente/lista/servicos', name: 'servicos', component: () => import('src/pages/cliente/servicos.vue') },
+      { path: 'estabelecimento/cadastro/servicos', name: 'cadastroServicos', component: () => import('src/pages/estabelecimento/cadastroServicos.vue') },
+      { path: 'estabelecimento/clientes-agendados', name: 'clientesAgendados', component: () => import('src/pages/estabelecimento/clientesAgendados.vue') },
     ]
   },
 

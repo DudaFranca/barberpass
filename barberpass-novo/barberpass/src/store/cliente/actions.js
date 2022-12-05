@@ -25,23 +25,9 @@ export const ActionBuscaCep = ({dispatch, commit}, payload) => {
   });
 }
 
-// export const ActionLoginCliente = ({dispatch, commit}, payload) => {
-//   return new Promise((resolve, reject) => {
-//     Connection.post("/login", {...payload})
-//       .then(response => 
-//         resolve(response.data)
-//       )
-//       .catch(error => {
-//         reject(error);
-//         console.log(error);
-//       });
-//   });
-// }
-
 export const ActionUsuarioServicos = ({dispatch, commit}, payload) => {
   return new Promise((resolve, reject) => {
-    console.log(payload);
-    Connection.post("/user-servicesn", {...payload})
+    Connection.post("/save/user-services", {...payload})
       .then(response => 
         resolve(response.data)
       )
@@ -51,3 +37,18 @@ export const ActionUsuarioServicos = ({dispatch, commit}, payload) => {
       });
   });
 }
+
+export const ActionGetUsuariosAgendados = ({dispatch, commit}, payload) => {
+  return new Promise((resolve, reject) => {
+    Connection.get(`get/user-services/11`)
+    .then(response => {
+      dispatch("ActionSetUsuariosAgendados", response.data)
+    }).catch(
+      error => reject(error)
+    )
+  });
+}
+
+export const ActionSetUsuariosAgendados = ({ commit }, payload) => {
+  commit(types.SET_USUARIOSAGENDADOS, payload);
+};

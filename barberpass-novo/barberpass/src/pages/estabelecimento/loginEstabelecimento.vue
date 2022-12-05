@@ -7,22 +7,17 @@
           v-model="cnpj"
           label="CNPJ"
           outlined
-          :rules="[(val) => (val && val.length > 0) || 'Preencha o seu CNPJ']"
-          lazy-rules
           bg-color="secondary"
           mask="##.###.###/####-##"
         />
       </div>
-      <div class="col-12">
+      <div class="col-12 q-mt-lg">
         <q-input
           ref="senha"
           v-model="senha"
           label="Senha"
           outlined
-          
-          :rules="[(val) => (val && val.length > 0) || 'Digite sua senha']"
           :type="isPwd ? 'password' : 'text'"
-          lazy-rules
           bg-color="secondary"
         >
           <template v-slot:append>

@@ -6,9 +6,8 @@
     <div class="q-mt-lg btn-padrao">
       <q-btn class="botao" label="Cadastre-se" to="/cliente/cadastro" />
     </div>
-    <div v-if="login">
-      <LoginType />
-      <q-btn flat class="botao-voltar" label="Voltar" @click="voltar" />
+    <div class="q-mt-lg">
+      <q-btn flat class="botao-voltar" label="Voltar" to="/" />
     </div>
   </q-page>
 </template>
@@ -18,16 +17,8 @@ export default {
   name: 'MainAccess',
   data () {
     return {
-      login: false
+      
     }
   },
-  methods: {
-    submitLogin () {
-      this.login = true
-    },
-    voltar () {
-      this.login = false
-    }
-  }
 }
 </script>

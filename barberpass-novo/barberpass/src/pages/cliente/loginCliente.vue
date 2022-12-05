@@ -33,10 +33,12 @@
           type="submit"
           class="botao"
           label="Entrar"
-          :to="logado ? '/planos' : ''"
         />
       </div>
     </form>
+    <div class="q-mt-lg" style="text-align: center;">
+      <q-btn flat class="botao-voltar" label="Voltar" to="/cliente" />
+    </div>
   </q-page>
 </template>
 
@@ -56,20 +58,10 @@ export default {
           logado: false
         }
     },
-    computed: {
-      logado() {
-        if (this.logado) {
-          return '/planos'
-        }
-      }
-    },
     methods: {
-      ...mapActions("cliente", ["ActionLoginCliente"]),
-
-        login() {
-          // this.ActionLoginCliente(this.login)
-          if (this.dados.login == "mari" && this.dados.senha == "123") {
-            this.logado = true;
+      login() {
+          if (this.dados.login == "duda" && this.dados.senha == "123") {
+            this.$router.push('/cliente/planos')
           }
         },
     }

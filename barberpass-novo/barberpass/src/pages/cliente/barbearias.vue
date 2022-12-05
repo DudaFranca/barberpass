@@ -12,16 +12,6 @@
             />
           </div>
         </div>
-        <div class="col-2">
-          <div id="buttons">
-            <q-btn
-              type="submit"
-              style="background-color: #fff"
-              icon="person"
-              to="/cliente/perfil"
-            />
-          </div>
-        </div>
       </div>
     </div>
     <div class="col-12">
@@ -41,7 +31,7 @@
   import { mapState,  mapActions } from "vuex";
 
   export default {
-    name: 'Home',
+    name: 'Barbearias',
     data() {
       return {
         
@@ -60,7 +50,7 @@
 
       listaServicos(event) {
         this.ActionGetServico(event);
-        this.$router.push("/lista/servicos");
+        this.$router.push("/cliente/lista/servicos");
       }
     }
   }
