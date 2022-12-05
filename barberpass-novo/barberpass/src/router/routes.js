@@ -18,7 +18,11 @@ const routes = [
       { path: 'estabelecimento/cadastro', name: 'cadastroEstabelecimento', component: () => import('src/pages/estabelecimento/cadastroEstabelecimento.vue') },
       { path: 'cliente/cadastro', name: 'cadastroCliente', component: () => import('src/pages/cliente/cadastroCliente.vue') },
       { path: 'cliente/cadastro/fianceiro', name: 'FinanceiroCliente', component: () => import('src/pages/cliente/financeiroCliente.vue') },
+      { path: 'cliente/perfil', name: 'perfil', component: () => import('src/pages/cliente/perfil.vue') },
       { path: 'planos', name: 'planos', component: () => import('src/pages/planos.vue') },
+      { path: 'lista/barbearias', name: 'barbearias', component: () => import('src/pages/barbearias.vue') },
+      { path: 'lista/servicos', name: 'servicos', component: () => import('src/pages/servicos.vue') },
+      { path: 'estabelecimento/cadastro/servicos', name: 'cadastroServicos', component: () => import('src/pages/cadastroServicos.vue') },
     ]
   },
 
@@ -26,7 +30,6 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayoutBackground.vue'),
     children: [
-      { path: 'home', name: 'home', component: () => import('src/pages/home.vue') },
     ]
   },
 

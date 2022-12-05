@@ -15,10 +15,6 @@ export const ActionCadastroCliente = ({dispatch, commit}, payload) => {
     })
 }
 
-// export const ActionStateCadastroCliente = ({commit}, payload) => {
-//   commit(types.SET_STATECADASTROCLIENTE, payload);
-// }
-
 export const ActionBuscaCep = ({dispatch, commit}, payload) => {
   return new Promise((resolve, reject) => {
     api.get(`https://viacep.com.br/ws/${ payload }/json/`).then(
@@ -29,9 +25,23 @@ export const ActionBuscaCep = ({dispatch, commit}, payload) => {
   });
 }
 
-export const ActionLoginCliente = ({dispatch, commit}, payload) => {
+// export const ActionLoginCliente = ({dispatch, commit}, payload) => {
+//   return new Promise((resolve, reject) => {
+//     Connection.post("/login", {...payload})
+//       .then(response => 
+//         resolve(response.data)
+//       )
+//       .catch(error => {
+//         reject(error);
+//         console.log(error);
+//       });
+//   });
+// }
+
+export const ActionUsuarioServicos = ({dispatch, commit}, payload) => {
   return new Promise((resolve, reject) => {
-    Connection.post("/login", {...payload})
+    console.log(payload);
+    Connection.post("/user-servicesn", {...payload})
       .then(response => 
         resolve(response.data)
       )

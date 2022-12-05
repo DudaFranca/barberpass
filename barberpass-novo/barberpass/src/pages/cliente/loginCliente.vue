@@ -3,26 +3,20 @@
     <form @submit.prevent="login" class="q-mt-lg">
       <div class="col-12">
         <q-input
-          ref="cpf"
-          v-model="dados.cpf"
-          label="CPF"
+          ref="login"
+          v-model="dados.login"
+          label="Login"
           outlined
-          :rules="[(val) => (val && val.length > 0) || 'Preencha o seu CPF']"
-          lazy-rules
           bg-color="secondary"
-          mask="###.###.###-##"
         />
       </div>
-      <div class="col-12">
+      <div class="col-12 q-mt-md">
         <q-input
           ref="senha"
           v-model="dados.senha"
           label="Senha"
           outlined
-          
-          :rules="[(val) => (val && val.length > 0) || 'Digite sua senha']"
           :type="isPwd ? 'password' : 'text'"
-          lazy-rules
           bg-color="secondary"
         >
           <template v-slot:append>
@@ -34,7 +28,7 @@
           </template>
         </q-input>
       </div>
-      <div id="buttons" class="q-mt-sm btn-padrao">
+      <div id="buttons" class="q-mt-lg btn-padrao">
         <q-btn
           type="submit"
           class="botao"
@@ -55,7 +49,7 @@ export default {
         return {
           dados: {
             id: 10,
-            cpf: "",
+            login: "",
             senha: "",
           },
           isPwd: true,
@@ -74,7 +68,7 @@ export default {
 
         login() {
           // this.ActionLoginCliente(this.login)
-          if (this.dados.cpf == "126.726.304-02" && this.dados.senha == "123") {
+          if (this.dados.login == "mari" && this.dados.senha == "123") {
             this.logado = true;
           }
         },

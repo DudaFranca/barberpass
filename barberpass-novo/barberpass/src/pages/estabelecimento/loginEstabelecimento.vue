@@ -34,7 +34,7 @@
           </template>
         </q-input>
       </div>
-      <div id="buttons" class="q-mt-sm btn-padrao">
+      <div id="buttons" class="q-mt-lg btn-padrao">
         <q-btn
           type="submit"
           class="botao"
@@ -57,7 +57,9 @@ export default {
     },
     methods: {
         login() {
-          console.log('ok');
+          if (this.cnpj == "29.914.685/0001-63" && this.senha == "123") {
+            this.$router.push("/estabelecimento/cadastro/servicos")
+          }
         }
     }
 }

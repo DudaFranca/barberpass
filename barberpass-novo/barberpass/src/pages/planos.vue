@@ -5,7 +5,7 @@
         <h4 class="titulo flex flex-center">Escolha seu plano</h4>
       </div>
       <div class="col-12">
-        <q-btn type="submit" no-caps style="border: solid 3px white;">
+        <q-btn type="submit" no-caps style="border: solid 3px white;" to="/lista/barbearias">
           <div class="col flex flex-center">
             <img src="../../public/img/icon1.svg" alt="">
           </div>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-12 q-mt-md">
-        <q-btn type="submit" no-caps style="border: solid 3px white;">
+        <q-btn type="submit" no-caps style="border: solid 3px white;" to="/lista/barbearias">
           <div class="col flex flex-center">
             <img src="../../public/img/icon2.svg" alt="">
           </div>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="col-12 q-mt-md">
-        <q-btn type="submit" no-caps style="border: solid 3px white;">
+        <q-btn type="submit" no-caps style="border: solid 3px white;" to="/lista/barbearias">
           <div class="col flex flex-center">
             <img src="../../public/img/icon3.svg" alt="">
           </div>
