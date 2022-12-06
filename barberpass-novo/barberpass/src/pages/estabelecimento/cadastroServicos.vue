@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
     <div class="row">
-      <div class="col-2 q-mt-xl" id="buttons">
+      <div class="col-2 q-mt-xl">
         <q-btn
           type="submit"
           style="background-color: #fff"
@@ -9,12 +9,20 @@
           to="/"
         />
       </div>
-      <div class="col-auto q-mt-xl" id="buttons">
+      <div class="col-5 q-mt-xl">
         <q-btn
           type="submit"
           style="background-color: #fff"
-          label="Clientes agendados"
+          label="Agendamentos"
           to="/estabelecimento/clientes-agendados"
+        />
+      </div>
+      <div class="col-auto q-mt-xl">
+        <q-btn
+          type="submit"
+          style="background-color: #fff"
+          label="Serviços"
+          @click="listaServicos(10)"
         />
       </div>
     </div>
@@ -92,6 +100,11 @@
           this.ActionGetServico(this.form.barberShop);
           this.limpar();
         }
+      },
+
+      listaServicos(event) {
+        this.ActionGetServico(event);
+        this.$router.push("/cliente/lista/servicos");
       },
 
       limpar() {

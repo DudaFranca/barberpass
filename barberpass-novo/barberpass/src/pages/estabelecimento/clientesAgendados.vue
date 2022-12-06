@@ -15,31 +15,37 @@
       </div>
     </div>
     <div class="col-12">
-      <h4 class="titulo">Lista de barbearias</h4>
+      <h4 class="titulo">Lista de agendamentos</h4>
     </div>
     <div class="col-12 q-mt-lg">
-      <q-card-section>
-        <q-card class="q-mt-xs q-pa-md" style="background-color: #fff; width: 100%; height: 60px;">
-          Barbearia: Barba <br>
+      <q-card>
+        <q-card-section class="q-mt-xs" style="background-color: #fff;">
+          Serviço: Barba <br>
           Hora: 10:00 <br>
           Status: Agendado
-        </q-card>
-        <q-card class="q-mt-xs" style="background-color: #fff; width: 100%; height: 60px;">
-          Barbearia: Desenho na barba <br>
+        </q-card-section>
+      </q-card>
+      <q-card>
+        <q-card-section class="q-mt-xs" style="background-color: #fff;">
+          Serviço: Desenho na barba <br>
           Hora: 11:00 <br>
           Status: Agendado
-        </q-card>
-        <q-card class="q-mt-xs" style="background-color: #fff; width: 100%; height: 60px;">
-          Barbearia: Corte moicano <br>
+        </q-card-section>
+      </q-card>
+      <q-card>
+        <q-card-section class="q-mt-xs" style="background-color: #fff;">
+          Serviço: Corte moicano <br>
           Hora: 11:30 <br>
           Status: Agendado
-        </q-card>
-        <q-card class="q-mt-xs" style="background-color: #fff; width: 100%; height: 60px;">
-          Barbearia: Regua <br>
+        </q-card-section>
+      </q-card>
+      <q-card>
+        <q-card-section class="q-mt-xs" style="background-color: #fff;">
+          Serviço: Regua <br>
           Hora: 15:00 <br>
           Status: Agendado
-        </q-card>
-      </q-card-section>
+        </q-card-section>
+      </q-card>
     </div>
   </q-page>
 </template>
